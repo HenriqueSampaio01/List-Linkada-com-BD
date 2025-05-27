@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppListView.MainPage">
+    <ScrollView>
+        <StackLayout Padding="5">
+            <StackLayout>
+                <Button Text="Cadastrar"
+                        BackgroundColor="DarkOrange"
+                        FontSize="20"
+                        Margin="0, 10"
+                        Clicked="btnCadastrar_Clicked"/>
+
+                <Button Text="Atualizar"
+                        BackgroundColor="DarkOrange"
+                        FontSize="20"
+                        Margin="0, 10"
+                        Clicked="btnAtualizar_Clicked"/>
+            </StackLayout>
+            <ListView x:Name="lsvLista">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame CornerRadius="10"
+                               Padding="10"
+                               BackgroundColor="#414142"
+                               Margin="5">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                        <Label Text="{Binding Nome}"
+                                       FontSize="20"
+                                       FontAttributes="Bold"/>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Idade:"/>
+                                            <Label Text="{Binding Idade}"
+                                           Margin="5, 0"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="End">
+                                        <Image Source="visualizar.png"
+                                               WidthRequest="30"
+                                               HeightRequest="30">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="tapVisualizar_Tapped"
+                                                    CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image Source="excluir.png"
+                                               WidthRequest="30"
+                                               HeightRequest="30">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="tapExcluir_Tapped"
+                                                    CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
